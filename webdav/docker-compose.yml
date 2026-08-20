@@ -1,0 +1,14 @@
+version: '3'
+services:
+  webdav:
+    image: bytemark/webdav
+    restart: always
+    user: 1000:1000
+    ports:
+      - "8080:80"
+    environment:
+      AUTH_TYPE: Digest
+      USERNAME: ${USERNAME}
+      PASSWORD: ${PASSWORD}
+    volumes:
+      - ${DATA_PATH}:/var/lib/dav

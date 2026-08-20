@@ -1,0 +1,17 @@
+services:
+  rancher:
+    container_name: rancher
+    image: rancher/rancher:v2.9.2
+    restart: always
+    privileged: true
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - TZ=Asia/Shanghai
+
+        #networks:
+        #  default:
+        #    name: nginx-proxy
+        #    external: true
+

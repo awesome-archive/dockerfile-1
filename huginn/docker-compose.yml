@@ -1,16 +1,19 @@
-version: "3"
 services:
-  linx-server:
-    image: huginn/huginn
+  huginn:
+    image: ghcr.io/huginn/huginn@sha256:d4e3dc0193e2716a077d0e53f59c999e3a62171dfbf5f7976d9f32456371eafc
     container_name: huginn
     restart: always
+    ports:
+      - "3000:3000"
     environment:
-      VIRTUAL_HOST: huginn.einverne.info
-      VIRTUAL_PORT: 3000
-      LETSENCRYPT_HOST: huginn.einverne.info
-      LETSENCRYPT_EMAIL: admin@einverne.info
-
-networks:
-  default:
-    external:
-      name: nginx-proxy
+      - HUGINN_DATABASE_ADAPTER=mysql2
+      - MYSQL_PORT_3306_TCP_ADDR=${MYSQL_HOST}
+      - MYSQL_PORT_3306_TCP_PORT=${MYSQL_PORT}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - DATABASE_USERNAME=${MYSQL_USERNAME}
+      - DATABASE_PASSWORD=${MYSQL_PASSWORD}
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"

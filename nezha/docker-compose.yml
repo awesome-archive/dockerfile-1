@@ -1,0 +1,19 @@
+services:
+  dashboard:
+    image: ghcr.io/nezhahq/nezha:latest
+    container_name: nezha-dashboard
+    restart: always
+    volumes:
+      - ./data:/dashboard/data
+    ports:
+      - 5555:8008
+    environment:
+      - VIRTUAL_HOST=nz.einverne.info
+      - VIRTUAL_PORT=8008
+      - LETSENCRYPT_HOST=nz.einverne.info
+      - LETSENCRYPT_EMAIL=admin@einverne.info
+
+networks:
+  default:
+    name: nginx-proxy
+    external: true

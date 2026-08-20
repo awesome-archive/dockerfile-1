@@ -10,9 +10,6 @@
 [submodule "docker-squid"]
 	path = docker-squid
 	url = https://github.com/einverne/docker-squid.git
-[submodule "qiandao"]
-	path = qiandao
-	url = https://github.com/einverne/qiandao.git
 [submodule "weibo-rss"]
 	path = weibo-rss
 	url = https://github.com/einverne/weibo-rss.git
@@ -22,3 +19,9 @@
 [submodule "docker-tt-rss"]
 	path = docker-tt-rss
 	url = https://github.com/einverne/docker-tt-rss.git
+[submodule "docker-flexget"]
+	path = docker-flexget
+	url = https://github.com/einverne/docker-flexget
+[submodule "docker-rutorrent"]
+	path = docker-rutorrent
+	url = https://github.com/einverne/docker-rutorrent

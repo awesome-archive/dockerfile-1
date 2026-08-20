@@ -1,15 +1,21 @@
 version: "3"
 services:
   nginx-proxy:
-    image: einverne/nginx-proxy
+    image: jwilder/nginx-proxy
     container_name: nginx-proxy
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5"
+        max-size: "50m"
     ports:
       - "80:80"
       - "443:443"
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
     volumes:
+      - "./client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro"
       - "conf:/etc/nginx/conf.d"
       - "vhost:/etc/nginx/vhost.d"
       - "html:/usr/share/nginx/html"
